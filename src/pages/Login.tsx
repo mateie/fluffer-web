@@ -7,7 +7,6 @@ import { LoginUser } from "../gql/auth";
 import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
-import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 
 const LoginPage = () => {
@@ -92,27 +91,11 @@ const LoginPage = () => {
         setCreds({ ...creds, [e.target.name]: e.target.value });
     };
 
-    const passwordHeader = (
-        <div className="font-bold mb-3">Pick a password</div>
-    );
+    if (isLoggedIn) return <></>;
 
-    const passwordFooter = (
-        <>
-            <Divider />
-            <p className="font-bold mt-2">For a good password, you can use</p>
-            <ul className="pl-2 ml-2 mt-0 line-height-3">
-                <li>At least one uppercase letter</li>
-                <li>At least one lowercase letter</li>
-                <li>At least one number</li>
-                <li>At least one special character</li>
-                <li>Minimum 8 characters</li>
-            </ul>
-        </>
-    );
-
-    return !isLoggedIn ? (
+    return (
         <div className="flex container h-screen m-auto">
-            <div className="flex flex-col p-10 justify-center items-center gap-10 m-auto shadow-2xl bg-gradient-to-r from-purple-950 to-transparent rounded-lg">
+            <div className="flex flex-col p-10 justify-center items-center gap-10 m-auto shadow-2xl bg-gradient-to-r from-purple-950 rounded-lg">
                 <div className="header p-2">
                     <span className="text-lg">Login to&nbsp;</span>
                     <span className="text-lg font-bold">Fluffer</span>
@@ -137,8 +120,6 @@ const LoginPage = () => {
                             type="password"
                             onChange={onChange}
                             value={creds.password}
-                            header={passwordHeader}
-                            footer={passwordFooter}
                             toggleMask
                             size={18}
                         />
@@ -152,16 +133,23 @@ const LoginPage = () => {
                 </div>
                 <div className="footer">
                     <Button
-                        label="Login"
+                        label="Submit"
                         onClick={() => loginUser()}
                         className="w-full"
                         severity="success"
                     />
+                    <p className="text-sm text-center mt-5">
+                        Don't have an account?{" "}
+                        <p
+                            className="text-blue-400 m-2 cursor-pointer"
+                            onClick={() => navigate("/sign-up")}
+                        >
+                            Sign up
+                        </p>
+                    </p>
                 </div>
             </div>
         </div>
-    ) : (
-        <></>
     );
 };
 
