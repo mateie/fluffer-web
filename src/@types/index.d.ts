@@ -25,8 +25,26 @@ declare type SignupErrors = {
 };
 
 declare type AuthContextType = {
-    user?: any | null;
+    user?: User | null;
     isLoggedIn: boolean;
     login: (userData: any) => void;
     logout: () => void;
+};
+
+declare type User = {
+    token: string;
+    id: string;
+    username: string;
+    email: string;
+    avatar?: string | null;
+    nickname?: string | null;
+    bio?: string | null;
+    createdAt;
+    createdTimestamp;
+    updatedAt;
+    updatedTimestamp;
+};
+
+declare type UserWithToken = User & {
+    token: string;
 };
