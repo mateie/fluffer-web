@@ -41,7 +41,9 @@ const LoginPage = () => {
 
             setCreds({ usernameOrEmail: "", password: "" });
 
-            login(JSON.stringify(userData));
+            console.log(userData);
+
+            login(userData);
 
             navigate("/");
         },
@@ -95,7 +97,7 @@ const LoginPage = () => {
 
     return (
         <div className="flex container h-screen m-auto">
-            <div className="flex flex-col p-10 justify-center items-center gap-10 m-auto shadow-2xl bg-gradient-to-r from-purple-950 rounded-lg">
+            <div className="flex flex-col p-10 justify-center items-center gap-10 m-auto shadow-2xl rounded-lg bg-neutral-700/[.05]">
                 <div className="header p-2">
                     <span className="text-lg">Login to&nbsp;</span>
                     <span className="text-lg font-bold">Fluffer</span>
