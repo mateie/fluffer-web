@@ -29,7 +29,7 @@ const httpLink = createUploadLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem("tnToken");
+    const token = localStorage.getItem("ff-token");
     return {
         headers: {
             ...headers,
