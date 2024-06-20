@@ -5,7 +5,7 @@ import { login, logout } from "../reducers/auth";
 export const AuthContext = createContext<AuthContextType>({
     user: null,
     isLoggedIn: false,
-    login: (userData: any) => userData,
+    login: (userData: User) => userData,
     logout: () => {}
 });
 
