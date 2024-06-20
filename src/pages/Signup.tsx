@@ -13,7 +13,7 @@ import { Button } from "primereact/button";
 const SignupPage = () => {
     const navigate = useNavigate();
 
-    const { isLoggedIn, login } = useAuth();
+    const { isLoggedIn } = useAuth();
 
     useEffect(() => {
         if (isLoggedIn) navigate("/");
@@ -112,125 +112,129 @@ const SignupPage = () => {
 
     if (isLoggedIn) return <></>;
 
-    if (successful)
-        return (
-            <div className="flex-1 justify-center items-center gap-5 p-6 bg-secondary/30">
-                <div className="w-full max-w-sm p-6 rounded-2xl">
-                    <div className="flex-col gap-3 items-center justify-center">
-                        <div className="text-center">
-                            Signed up for{" "}
-                            <span className="font-bold">Fluffer</span>
-                        </div>
-                        <div className="text-green-500 text-center">
-                            Account created successfully
-                        </div>
-                    </div>
-                    <div className="flex-col gap-3 pb-0">
-                        <Button onClick={() => navigate("/")}>
-                            <span>Sign in</span>
-                        </Button>
-                    </div>
-                </div>
-            </div>
-        );
-
     return (
         <div className="flex container h-screen m-auto">
             <div className="flex flex-col p-10 justify-center items-center gap-10 m-auto shadow-2xl bg-gradient-to-r from-purple-950 to-transparent rounded-lg">
                 <div className="header p-2">
-                    <span className="text-lg">Signup for&nbsp;</span>
-                    <span className="text-lg font-bold">Fluffer</span>
+                    {successful ? (
+                        <>
+                            <span className="text-lg">Signed up for&nbsp;</span>
+                            <span className="text-lg font-bold">Fluffer</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="text-lg">Signup for&nbsp;</span>
+                            <span className="text-lg font-bold">Fluffer</span>
+                        </>
+                    )}
                 </div>
-                <div className="flex flex-col gap-8 items-center justify-center">
-                    <div className="form-field">
-                        <FloatLabel>
-                            <InputText
-                                id="email"
-                                name="email"
-                                onChange={onChange}
-                                value={creds.email}
-                            />
-                            <label htmlFor="email">Email</label>
-                        </FloatLabel>
-                        <span className="text-red-500 text-sm">
-                            {errors.email}
-                        </span>
-                    </div>
-                    <div className="form-field">
-                        <FloatLabel>
-                            <InputText
-                                id="username"
-                                name="username"
-                                onChange={onChange}
-                                value={creds.username}
-                            />
-                            <label htmlFor="username">Username</label>
-                        </FloatLabel>
-                        <span className="text-red-500 text-sm">
-                            {errors.username}
-                        </span>
-                    </div>
-                    <div className="form-field">
-                        <FloatLabel>
-                            <Password
-                                id="password"
-                                name="password"
-                                type="password"
-                                onChange={onChange}
-                                value={creds.password}
-                                header={passwordHeader}
-                                footer={passwordFooter}
-                                toggleMask
-                                size={18}
-                            />
-                            <label htmlFor="password">Password</label>
-                        </FloatLabel>
-                        {errors.password && (
+                {successful ? (
+                    <span className="text-green-500 text-center">
+                        Account created successfully
+                    </span>
+                ) : (
+                    <div className="flex flex-col gap-8 items-center justify-center">
+                        <div className="form-field">
+                            <FloatLabel>
+                                <InputText
+                                    id="email"
+                                    name="email"
+                                    onChange={onChange}
+                                    value={creds.email}
+                                />
+                                <label htmlFor="email">Email</label>
+                            </FloatLabel>
                             <span className="text-red-500 text-sm">
-                                {errors.password}
+                                {errors.email}
                             </span>
-                        )}
-                    </div>
-                    <div className="form-field">
-                        <FloatLabel>
-                            <Password
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                type="confirmPassword"
-                                onChange={onChange}
-                                value={creds.confirmPassword}
-                                toggleMask
-                                feedback={false}
-                                variant="outlined"
-                                size={18}
-                            />
-                            <label htmlFor="confirmPassword">
-                                Confirm Password
-                            </label>
-                        </FloatLabel>
-                        {errors.confirmPassword && (
+                        </div>
+                        <div className="form-field">
+                            <FloatLabel>
+                                <InputText
+                                    id="username"
+                                    name="username"
+                                    onChange={onChange}
+                                    value={creds.username}
+                                />
+                                <label htmlFor="username">Username</label>
+                            </FloatLabel>
                             <span className="text-red-500 text-sm">
-                                {errors.confirmPassword}
+                                {errors.username}
                             </span>
-                        )}
+                        </div>
+                        <div className="form-field">
+                            <FloatLabel>
+                                <Password
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    onChange={onChange}
+                                    value={creds.password}
+                                    header={passwordHeader}
+                                    footer={passwordFooter}
+                                    toggleMask
+                                    size={18}
+                                />
+                                <label htmlFor="password">Password</label>
+                            </FloatLabel>
+                            {errors.password && (
+                                <span className="text-red-500 text-sm">
+                                    {errors.password}
+                                </span>
+                            )}
+                        </div>
+                        <div className="form-field">
+                            <FloatLabel>
+                                <Password
+                                    id="confirmPassword"
+                                    name="confirmPassword"
+                                    type="confirmPassword"
+                                    onChange={onChange}
+                                    value={creds.confirmPassword}
+                                    toggleMask
+                                    feedback={false}
+                                    variant="outlined"
+                                    size={18}
+                                />
+                                <label htmlFor="confirmPassword">
+                                    Confirm Password
+                                </label>
+                            </FloatLabel>
+                            {errors.confirmPassword && (
+                                <span className="text-red-500 text-sm">
+                                    {errors.confirmPassword}
+                                </span>
+                            )}
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className="footer">
-                    <Button
-                        label="Submit"
-                        onClick={() => signupUser()}
-                        className="w-full"
-                        severity="success"
-                    />
-                    <p className="text-sm text-center mt-5">
-                        Already have an account?{" "}
-                        <p
-                            className="text-blue-400 m-2 cursor-pointer"
+                    {successful ? (
+                        <Button
+                            label="Login"
                             onClick={() => navigate("/login")}
-                        >
-                            Login
-                        </p>
-                    </p>
+                            className="w-full"
+                            severity="success"
+                        />
+                    ) : (
+                        <>
+                            <Button
+                                label="Submit"
+                                onClick={() => signupUser()}
+                                className="w-full"
+                                severity="success"
+                            />
+                            <p className="text-sm text-center mt-5">
+                                Already have an account?{" "}
+                                <p
+                                    className="text-blue-400 m-2 cursor-pointer"
+                                    onClick={() => navigate("/login")}
+                                >
+                                    Login
+                                </p>
+                            </p>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
