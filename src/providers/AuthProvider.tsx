@@ -13,10 +13,10 @@ export function AuthProvider(props: PropsWithChildren) {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.auth.user);
 
-    const loginUser = (userData: any) => {
+    const loginUser = (userData: UserWithToken) => {
         localStorage.setItem("ff-token", userData.token);
-
-        dispatch(login(userData));
+        const { token: _, ...user } = userData;
+        dispatch(login(user));
     };
 
     const logoutUser = () => {
