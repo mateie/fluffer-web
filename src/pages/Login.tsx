@@ -41,8 +41,6 @@ const LoginPage = () => {
 
             setCreds({ usernameOrEmail: "", password: "" });
 
-            console.log(userData);
-
             login(userData);
 
             navigate("/");
