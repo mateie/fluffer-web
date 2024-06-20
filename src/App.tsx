@@ -3,11 +3,20 @@ import { Home, Login, NotFound, Signup } from "./pages";
 import { useQuery } from "@apollo/client";
 import { PulseCheck } from "./gql/general";
 import { ErrorMessage } from "./components";
+import { useEffect, useState } from "react";
 
 const App = () => {
-    const { data: { pulse } = {} } = useQuery(PulseCheck);
+    const [pulse, setPulse] = useState(false);
 
-    if (!pulse)
+    const { data: { pulse: pulseData } = {} } = useQuery(PulseCheck, {
+        pollInterval: pulse ? 0 : 1000
+    });
+
+    useEffect(() => {
+        if (pulseData) setPulse(true);
+    }, [pulseData]);
+
+    if (!pulseData)
         return (
             <ErrorMessage
                 message="😢 Server is down 😢"
