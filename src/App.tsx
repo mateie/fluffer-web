@@ -9,7 +9,8 @@ const App = () => {
     const [pulse, setPulse] = useState(false);
 
     const { data: { pulse: pulseData } = {} } = useQuery(PulseCheck, {
-        pollInterval: pulse ? 0 : 1000
+        pollInterval: pulse ? 0 : 1000,
+        fetchPolicy: "no-cache"
     });
 
     useEffect(() => {
