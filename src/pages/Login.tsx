@@ -121,6 +121,7 @@ const LoginPage = () => {
                             onChange={onChange}
                             value={creds.password}
                             toggleMask
+                            feedback={false}
                             size={18}
                         />
                         <label htmlFor="password">Password</label>
