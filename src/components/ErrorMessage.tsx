@@ -5,9 +5,11 @@ const ErrorMessage = ({
     message: string;
     subtext?: string;
 }) => (
-    <div className="flex flex-column align-items-center p-8">
-        <h2 className="text-center">{message}</h2>
-        {subtext && <p className="text-center">{subtext}</p>}
+    <div className="flex container h-screen m-auto">
+        <div className="flex flex-col justify-center m-auto items-center">
+            <h2 className="text-2xl font-bold">{message}</h2>
+            {subtext && <span className="text-lg">{subtext}</span>}
+        </div>
     </div>
 );
 
