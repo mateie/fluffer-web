@@ -43,7 +43,7 @@ const LoginPage = () => {
 
             login(userData);
 
-            navigate("/");
+            navigate("/servers");
         },
         onError: (error) => {
             // TODO: Come up with a better way to handle errors.
