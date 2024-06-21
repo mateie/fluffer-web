@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { PostsNavRight, ServersNavRight } from "./NavItems";
-import AvatarButton from "./AvatarButton";
+
+import ProfileMenu from "./ProfileMenu";
 
 const Navigation = () => {
     const location = useLocation();
@@ -13,13 +14,13 @@ const Navigation = () => {
             <div className="flex items-center gap-2">
                 {/* Search field if posts  */}
             </div>
-            <div className="flex items-center">
-                <div className="flex items-center mr-10">
+            <div className="flex gap-14 items-center">
+                <div className="flex items-center">
                     {location.pathname === "/servers" && <ServersNavRight />}
                     {location.pathname === "/posts" && <PostsNavRight />}
                 </div>
-                <div className="mx-4">
-                    <AvatarButton />
+                <div className="flex flex-wrap">
+                    <ProfileMenu />
                 </div>
             </div>
         </div>
