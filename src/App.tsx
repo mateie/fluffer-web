@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { PulseCheck } from "./gql/general";
 import { ErrorMessage } from "./components";
 import { useEffect, useState } from "react";
+import Layout from "./components/Layout";
 
 const App = () => {
     const [pulse, setPulse] = useState(false);
@@ -32,7 +33,10 @@ const App = () => {
     return (
         <div className="block">
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Layout />}>
+                    <Route path="/servers" element={<Home />} />
+                    <Route path="/posts" element={<Home />} />
+                </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/sign-up" element={<Signup />} />
                 <Route path="*" element={<NotFound />} />
