@@ -1,34 +1,28 @@
 import { Route, Routes } from "react-router-dom";
 import { Home, Login, NotFound, Signup } from "./pages";
 import { useQuery } from "@apollo/client";
-import { PulseCheck } from "./gql/general";
-import { ErrorMessage } from "./components";
-import { useEffect, useState } from "react";
+import { APIStatus } from "./gql/general";
 import Layout from "./components/Layout";
+import { useEffect, useState } from "react";
+import APILoading from "./components/status/APILoading";
+import APIDown from "./components/status/APIDown";
 
 const App = () => {
-    const [pulse, setPulse] = useState(false);
+    const [apiStatus, setApiStatus] = useState(false);
 
-    const { data: { pulse: pulseData } = {} } = useQuery(PulseCheck, {
-        pollInterval: pulse ? 0 : 1000,
+    const { loading, data: { apiStatus: status } = {} } = useQuery(APIStatus, {
+        pollInterval: apiStatus ? 50000 : 1000,
         fetchPolicy: "no-cache"
     });
 
     useEffect(() => {
-        if (pulseData) setPulse(true);
-    }, [pulseData]);
+        if (status) setApiStatus(true);
+    }, [status]);
 
-    if (!pulseData)
-        return (
-            <ErrorMessage
-                message="😢 Server is down 😢"
-                subtext={[
-                    "Please try again later.",
-                    "We apologize for the inconvenience.",
-                    "You can also contact developers for more information."
-                ]}
-            />
-        );
+    console.log(status);
+
+    if (loading) return <APILoading />;
+    if (!status) return <APIDown />;
 
     return (
         <div className="block">

@@ -2,13 +2,17 @@ import {
     ApolloClient,
     ApolloLink,
     ApolloProvider,
-    InMemoryCache
+    InMemoryCache,
+    split
 } from "@apollo/client";
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { RetryLink } from "@apollo/client/link/retry";
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
+import { createClient } from "graphql-ws";
+import { getMainDefinition } from "@apollo/client/utilities";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -27,6 +31,17 @@ const { VITE_APP_URL, DEV } = import.meta.env;
 const httpLink = createUploadLink({
     uri: VITE_APP_URL
 });
+
+const wsUrl = `${VITE_APP_URL.replace("http", "ws").replace(
+    "https",
+    "wss"
+)}/ws`;
+
+const wsLink = new GraphQLWsLink(
+    createClient({
+        url: wsUrl
+    })
+);
 
 const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem("ff-token");
@@ -62,7 +77,19 @@ const retryLink = new RetryLink({
     }
 });
 
-const link = ApolloLink.from([retryLink, errorLink, authLink, httpLink]);
+const splitLink = split(
+    ({ query }) => {
+        const definition = getMainDefinition(query);
+        return (
+            definition.kind === "OperationDefinition" &&
+            definition.operation === "subscription"
+        );
+    },
+    wsLink,
+    httpLink
+);
+
+const link = ApolloLink.from([retryLink, errorLink, authLink, splitLink]);
 const cache = new InMemoryCache({
     addTypename: false
 });
@@ -81,12 +108,7 @@ export default (
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={client}>
-                <IconContext.Provider
-                    value={{
-                        className: "mr-1",
-                        style: { marginTop: "2.5px" }
-                    }}
-                >
+                <IconContext.Provider value={{}}>
                     <PrimeReactProvider>
                         <Router>
                             <AuthProvider>

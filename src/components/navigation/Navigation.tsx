@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { PostsNavRight, ServersNavRight } from "./NavItems";
 
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "../ProfileMenu";
 
 const Navigation = () => {
     const location = useLocation();
