@@ -11,9 +11,7 @@ const Navigation = () => {
             <div className="flex items-center">
                 <div className="text-2xl font-bold">Logo</div>
             </div>
-            <div className="flex items-center gap-2">
-                {/* Search field if posts  */}
-            </div>
+            <div className="flex items-center gap-2">{/* Search field */}</div>
             <div className="flex gap-14 items-center">
                 <div className="flex items-center">
                     {location.pathname === "/servers" && <ServersNavRight />}
