@@ -9,13 +9,13 @@ export const AuthContext = createContext<AuthContextType>({
     logout: () => {}
 });
 
-export function AuthProvider(props: PropsWithChildren) {
+export function AuthProvider({ children }: PropsWithChildren) {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.auth.user);
 
     const loginUser = (userData: UserWithToken) => {
-        localStorage.setItem("ff-token", userData.token);
-        const { token: _, ...user } = userData;
+        const { token, ...user } = userData;
+        localStorage.setItem("ff-token", token);
         dispatch(login(user));
     };
 
@@ -33,7 +33,7 @@ export function AuthProvider(props: PropsWithChildren) {
                 logout: logoutUser
             }}
         >
-            {props.children}
+            {children}
         </AuthContext.Provider>
     );
 }

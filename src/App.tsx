@@ -19,23 +19,19 @@ const App = () => {
         if (status) setApiStatus(true);
     }, [status]);
 
-    console.log(status);
-
     if (loading) return <APILoading />;
     if (!status) return <APIDown />;
 
     return (
-        <div className="block">
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route path="/servers" element={<Home />} />
-                    <Route path="/posts" element={<Home />} />
-                </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/sign-up" element={<Signup />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route path="/servers" element={<Home />} />
+                <Route path="/posts" element={<Home />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<Signup />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
     );
 };
 
