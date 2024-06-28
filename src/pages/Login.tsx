@@ -8,6 +8,7 @@ import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
+import { LoginCredentials, LoginErrors } from "src/@types";
 
 const LoginPage = () => {
     const navigate = useNavigate();

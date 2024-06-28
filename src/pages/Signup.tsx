@@ -9,6 +9,7 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
+import { SignupCredentials, SignupErrors } from "src/@types";
 
 const SignupPage = () => {
     const navigate = useNavigate();
