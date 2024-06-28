@@ -1,4 +1,3 @@
-import { Avatar } from "primereact/avatar";
 import SidebarPostsButton from "./SibebarPostsButton";
 
 const SidebarPosts = () => {
