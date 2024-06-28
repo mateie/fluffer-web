@@ -10,6 +10,7 @@ import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 import { SignupCredentials, SignupErrors } from "src/@types";
+import { Calendar } from "primereact/calendar";
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -24,14 +25,16 @@ const SignupPage = () => {
         email: "",
         username: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
+        dateOfBirth: null
     });
 
     const [errors, setErrors] = useState<SignupErrors>({
         email: null,
         username: null,
         password: null,
-        confirmPassword: null
+        confirmPassword: null,
+        dateOfBirth: null
     });
 
     const [successful, setSuccessful] = useState(false);
@@ -49,40 +52,54 @@ const SignupPage = () => {
         },
         onError: (error) => {
             // TODO: Come up with a better way to handle errors.
-            const { message } = error;
-            if (message.toLowerCase().includes("email")) {
+            const message = error.message.toLowerCase();
+            if (message.includes("email")) {
                 setErrors({
-                    email: message,
+                    email: error.message,
                     username: null,
                     password: null,
-                    confirmPassword: null
+                    confirmPassword: null,
+                    dateOfBirth: null
                 });
             }
 
-            if (message.toLowerCase().includes("username")) {
+            if (message.includes("username")) {
                 setErrors({
                     email: null,
-                    username: message,
+                    username: error.message,
                     password: null,
-                    confirmPassword: null
+                    confirmPassword: null,
+                    dateOfBirth: null
                 });
             }
 
-            if (message.toLowerCase().includes("password")) {
+            if (message.includes("password")) {
                 setErrors({
                     email: null,
                     username: null,
-                    password: message,
-                    confirmPassword: null
+                    password: error.message,
+                    confirmPassword: null,
+                    dateOfBirth: null
                 });
             }
 
-            if (message.toLowerCase().includes("confirm")) {
+            if (message.includes("confirm")) {
                 setErrors({
                     email: null,
                     username: null,
                     password: null,
-                    confirmPassword: message
+                    confirmPassword: error.message,
+                    dateOfBirth: null
+                });
+            }
+
+            if (message.includes("date") || message.includes("13")) {
+                setErrors({
+                    email: null,
+                    username: null,
+                    password: null,
+                    confirmPassword: null,
+                    dateOfBirth: error.message
                 });
             }
         },
@@ -204,6 +221,35 @@ const SignupPage = () => {
                             {errors.confirmPassword && (
                                 <span className="text-red-500 text-sm">
                                     {errors.confirmPassword}
+                                </span>
+                            )}
+                        </div>
+                        <div className="form-field">
+                            <FloatLabel>
+                                <Calendar
+                                    inputId="dateOfBirth"
+                                    value={creds.dateOfBirth}
+                                    onChange={(e) =>
+                                        setCreds({
+                                            ...creds,
+                                            dateOfBirth: e.value
+                                        })
+                                    }
+                                    maxDate={
+                                        new Date(
+                                            new Date().setFullYear(
+                                                new Date().getFullYear() - 13
+                                            )
+                                        )
+                                    }
+                                />
+                                <label htmlFor="dateOfBirth">
+                                    Date of Birth
+                                </label>
+                            </FloatLabel>
+                            {errors.dateOfBirth && (
+                                <span className="text-red-500 text-sm">
+                                    {errors.dateOfBirth}
                                 </span>
                             )}
                         </div>

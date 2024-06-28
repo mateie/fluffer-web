@@ -1,4 +1,5 @@
 import { ButtonProps } from "primereact/button";
+import { Nullable } from "primereact/ts-helpers";
 
 declare type LoginCredentials = {
     usernameOrEmail: string;
@@ -10,6 +11,7 @@ declare type SignupCredentials = {
     password: string;
     username: string;
     confirmPassword: string;
+    dateOfBirth: Nullable<Date>;
 };
 
 declare type LoginErrors = {
@@ -24,6 +26,7 @@ declare type SignupErrors = {
     password?: string | null;
     username?: string | null;
     confirmPassword?: string | null;
+    dateOfBirth?: string | null;
 };
 
 declare type AuthContextType = {

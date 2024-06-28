@@ -26,6 +26,7 @@ export const SignupUser = gql`
         $email: String!
         $password: String!
         $confirmPassword: String!
+        $dateOfBirth: String!
     ) {
         signupUser(
             input: {
@@ -33,6 +34,7 @@ export const SignupUser = gql`
                 email: $email
                 password: $password
                 confirmPassword: $confirmPassword
+                dateOfBirth: $dateOfBirth
             }
         )
     }
