@@ -21,9 +21,7 @@ const SidebarPosts = () => {
         },
         {
             id: "3",
-            username: "lolee",
-            avatarUrl:
-                "https://static-00.iconduck.com/assets.00/perspective-dice-random-icon-469x512-mm6xb9so.png"
+            username: "lolee"
         }
     ];
 
