@@ -26,7 +26,7 @@ const Sidebar = ({
                             <Avatar
                                 shape="circle"
                                 label="Posts"
-                                className="switch-between w-16 h-16 border-2 border-blue-500"
+                                className="switch-between w-16 h-16 border border-blue-500"
                                 onClick={() => navTo("servers")}
                             />
                         </>
@@ -34,7 +34,7 @@ const Sidebar = ({
                         <Avatar
                             shape="circle"
                             label="Servers"
-                            className="switch-between w-16 h-16 border-2 border-green-500"
+                            className="switch-between w-16 h-16 border border-green-500"
                             onClick={() => navTo("posts")}
                         />
                     )}

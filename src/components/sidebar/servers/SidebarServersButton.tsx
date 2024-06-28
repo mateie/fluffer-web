@@ -28,12 +28,12 @@ const SidebarServersButton = (props: SidebarServersButtonProps) => {
             icon={
                 <Avatar
                     label={server.nameAcronym}
-                    image={server.iconUrl}
+                    image={server.iconUrl || undefined}
                     className="bg-transparent"
                 />
             }
             severity="success"
-        ></Button>
+        />
     );
 };
 

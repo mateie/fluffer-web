@@ -13,7 +13,6 @@ const SidebarPostsButton = (props: SidebarPostsButtonProps) => {
                 className="h-12 w-12 text-white bg-neutral-700 hover:bg-neutral-600"
                 text
                 rounded
-                severity="success"
             />
         );
 
@@ -32,8 +31,7 @@ const SidebarPostsButton = (props: SidebarPostsButtonProps) => {
                     className="bg-transparent"
                 />
             }
-            severity="success"
-        ></Button>
+        />
     );
 };
 

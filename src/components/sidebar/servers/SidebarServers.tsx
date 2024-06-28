@@ -8,6 +8,7 @@ const SidebarServers = () => {
             id: "1",
             name: "Server 1",
             nameAcronym: "S1",
+            icon: "https://static-00.iconduck.com/assets.00/perspective-dice-random-icon-469x512-mm6xb9so.png",
             iconUrl:
                 "https://static-00.iconduck.com/assets.00/perspective-dice-random-icon-469x512-mm6xb9so.png"
         },
@@ -24,7 +25,7 @@ const SidebarServers = () => {
     ];
 
     return (
-        <div className="flex flex-col items-center flex-grow w-full shadow-2xl bg-neutral-700/[.2] p-5 border-y-2 gap-3 border-green-500">
+        <div className="flex flex-col items-center flex-grow w-full shadow-2xl bg-neutral-700/[.2] p-5 border-y gap-3 border-green-500">
             {mockData.map((server) => (
                 <SidebarServersButton server={server} />
             ))}

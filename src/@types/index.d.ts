@@ -63,6 +63,6 @@ declare type Server = {
     id: string;
     name: string;
     nameAcronym: string;
-    icon?: string;
-    iconUrl?: string;
+    icon?: string | null;
+    iconUrl?: string | null;
 };

@@ -15,10 +15,20 @@ const Toolbar = ({ pageType }: { pageType: "posts" | "servers" }) => {
             start={logo}
             center={<SearchBar />}
             end={<ProfileMenu />}
+            pt={{
+                root: {
+                    style: {
+                        padding: "3px",
+                        paddingLeft: "10px",
+                        paddingRight: "10px",
+                        borderRadius: 0
+                    }
+                }
+            }}
             className={`w-full shadow-2xl bg-neutral-700/[.2] ${
                 pageType === "posts"
-                    ? "border-b-2 border-b-blue-500"
-                    : "border-b-2 border-b-green-500"
+                    ? "border-b border-b-blue-500 border-l border-l-blue-500"
+                    : "border-b border-b-green-500 border-l border-l-green-500"
             }`}
         />
     );
