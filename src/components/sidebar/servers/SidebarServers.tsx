@@ -1,5 +1,5 @@
 import { BiPlus } from "react-icons/bi";
-import SidebarServersButton from "./SibebarServersButton";
+import SidebarServersButton from "./SidebarServersButton";
 import { Server } from "src/@types";
 
 const SidebarServers = () => {

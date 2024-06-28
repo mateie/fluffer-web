@@ -1,4 +1,4 @@
-import SidebarPostsButton from "./SibebarPostsButton";
+import SidebarPostsButton from "./SidebarPostsButton";
 
 const SidebarPosts = () => {
     const mockData: any[] = [
