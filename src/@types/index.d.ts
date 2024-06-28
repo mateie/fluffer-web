@@ -1,3 +1,5 @@
+import { ButtonProps } from "primereact/button";
+
 declare type LoginCredentials = {
     usernameOrEmail: string;
     password: string;
@@ -35,15 +37,32 @@ declare type User = {
     id: string;
     username: string;
     email: string;
+    globalName?: string | null;
     avatar?: string | null;
-    nickname?: string | null;
+    avatarUrl?: string | null;
     bio?: string | null;
-    createdAt;
-    createdTimestamp;
-    updatedAt;
-    updatedTimestamp;
+    createdAt: string;
+    createdTimestamp: number;
+    updatedAt: string;
+    updatedTimestamp: number;
 };
 
 declare type UserWithToken = User & {
     token: string;
+};
+
+declare type SidebarServersButtonProps = ButtonProps & {
+    server?: Server;
+};
+
+declare type SidebarPostsButtonProps = ButtonProps & {
+    user?: User;
+};
+
+declare type Server = {
+    id: string;
+    name: string;
+    nameAcronym: string;
+    icon?: string;
+    iconUrl?: string;
 };
