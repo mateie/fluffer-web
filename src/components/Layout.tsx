@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 import { useAuth } from "../hooks";
 import { useEffect } from "react";
 import SearchBar from "./SearchBar";
@@ -16,9 +16,9 @@ const Layout = () => {
             isLoggedIn &&
             (location.pathname === "/login" || location.pathname === "/sign-up")
         )
-            navigate("/posts");
+            navigate("/servers");
 
-        if (isLoggedIn && location.pathname === "/") navigate("/posts");
+        if (isLoggedIn && location.pathname === "/") navigate("/servers");
     }, [isLoggedIn, location.pathname]);
 
     return (

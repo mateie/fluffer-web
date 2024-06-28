@@ -1,6 +1,7 @@
 import { PropsWithChildren, createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducers/auth";
+import { AuthContextType, User, UserWithToken } from "src/@types";
 
 export const AuthContext = createContext<AuthContextType>({
     user: null,
