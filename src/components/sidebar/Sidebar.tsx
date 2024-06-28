@@ -1,34 +1,15 @@
-import { useLocation, useNavigate } from "react-router-dom";
-
-import { useEffect, useState } from "react";
 import { Avatar } from "primereact/avatar";
 import SidebarPosts from "./posts/SidebarPosts";
 import SidebarServers from "./servers/SidebarServers";
 import { Tooltip } from "primereact/tooltip";
 
-const Sidebar = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const [pageType, setPageType] = useState<"posts" | "servers">("servers");
-
-    useEffect(() => {
-        if (location.pathname === "/servers") setPageType("servers");
-        if (location.pathname === "/posts") setPageType("posts");
-    }, [location.pathname, pageType]);
-
-    // TODO: Finish the sidebar, Move profile menu to the toolbar instead
-
-    const navTo = (type: "posts" | "servers") => {
-        if (type === "posts") {
-            setPageType("posts");
-            navigate("/posts");
-        } else {
-            setPageType("servers");
-            navigate("/servers");
-        }
-    };
-
-    console.log(pageType);
+const Sidebar = ({
+    pageType,
+    navTo
+}: {
+    pageType: "posts" | "servers";
+    navTo: Function;
+}) => {
     return (
         <>
             <Tooltip

@@ -25,7 +25,7 @@ const SidebarPosts = () => {
     ];
 
     return (
-        <div className="flex flex-col items-center flex-grow w-full shadow-2xl bg-neutral-700/[.2] rounded-2xl p-5 border-y-2 gap-3 border-blue-500">
+        <div className="flex flex-col items-center flex-grow w-full shadow-2xl bg-neutral-700/[.2] p-5 border-y-2 gap-3 border-blue-500">
             {mockData.map((user) => (
                 <SidebarPostsButton user={user} />
             ))}

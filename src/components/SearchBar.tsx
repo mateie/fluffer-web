@@ -5,7 +5,7 @@ const SearchBar = () => {
         <div className="flex items-center">
             <InputText
                 placeholder="Search..."
-                className="rounded-2xl shadow-lg w-96 p-2"
+                className="rounded-2xl shadow-lg w-96"
             />
         </div>
     );
