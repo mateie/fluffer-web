@@ -1,5 +1,5 @@
 import { Button } from "primereact/button";
-import { SidebarPostsButtonProps } from "../../../@types";
+import { SidebarPostsButtonProps } from "src/@types";
 import { Avatar } from "primereact/avatar";
 
 const SidebarPostsButton = (props: SidebarPostsButtonProps) => {
