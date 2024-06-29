@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Login, NotFound, Signup } from "./pages";
+import { Home, Login, NotFound, SignUp } from "./pages";
 import { useQuery } from "@apollo/client";
 import { APIStatus } from "./gql/general";
 import Layout from "./components/Layout";
@@ -29,7 +29,7 @@ const App = () => {
                 <Route path="/posts" element={<Home />} />
             </Route>
             <Route path="/login" element={<Login />} />
-            <Route path="/sign-up" element={<Signup />} />
+            <Route path="/sign-up" element={<SignUp />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );

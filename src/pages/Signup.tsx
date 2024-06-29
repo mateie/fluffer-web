@@ -12,7 +12,7 @@ import { Button } from "primereact/button";
 import { SignupCredentials, SignupErrors } from "src/@types";
 import { Calendar } from "primereact/calendar";
 
-const SignupPage = () => {
+const SignUpPage = () => {
     const navigate = useNavigate();
 
     const { isLoggedIn } = useAuth();
@@ -288,4 +288,4 @@ const SignupPage = () => {
     );
 };
 
-export default SignupPage;
+export default SignUpPage;
