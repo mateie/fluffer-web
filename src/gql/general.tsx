@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const APIStatus = gql`
-    query APIStatus {
+    query apiStatus {
         apiStatus
     }
 `;

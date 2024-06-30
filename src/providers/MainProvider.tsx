@@ -39,12 +39,16 @@ const wsUrl = `${VITE_APP_URL.replace("http", "ws").replace(
 
 const wsLink = new GraphQLWsLink(
     createClient({
-        url: wsUrl
+        url: wsUrl,
+        connectionParams: {
+            token: localStorage.getItem("ff-token")
+        }
     })
 );
 
 const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem("ff-token");
+    console.log("Token", token);
     return {
         headers: {
             ...headers,
