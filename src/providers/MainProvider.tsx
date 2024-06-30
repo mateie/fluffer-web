@@ -25,6 +25,7 @@ import { IconContext } from "react-icons";
 
 import App from "../App";
 import { AuthProvider } from "./AuthProvider";
+import { AppModeProvider } from "./AppModeProvider";
 
 const { VITE_APP_URL, DEV } = import.meta.env;
 
@@ -112,11 +113,13 @@ export default (
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <ApolloProvider client={client}>
-                <IconContext.Provider value={{}}>
+                <IconContext.Provider value={{ className: "mr-2" }}>
                     <PrimeReactProvider>
                         <Router>
                             <AuthProvider>
-                                <App />
+                                <AppModeProvider>
+                                    <App />
+                                </AppModeProvider>
                             </AuthProvider>
                         </Router>
                     </PrimeReactProvider>

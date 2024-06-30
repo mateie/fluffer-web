@@ -11,8 +11,7 @@ export const ProfileMenu = () => {
             label={user.username[0].toUpperCase()}
             image={user.avatar ?? undefined}
             shape="circle"
-            size="xlarge"
-            className="h-16 w-16"
+            className="h-12 w-12"
         />
     );
 };

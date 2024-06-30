@@ -36,6 +36,12 @@ declare type AuthContextType = {
     logout: () => void;
 };
 
+declare type AppModeContextType = {
+    appMode: "servers" | "posts";
+    setAppMode: (appMode: "servers" | "posts") => void;
+    changeAppMode: (appMode: "servers" | "posts") => void;
+};
+
 declare type User = {
     id: string;
     username: string;
