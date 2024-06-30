@@ -3,12 +3,7 @@ import SearchBar from "./SearchBar";
 import ProfileMenu from "./ProfileMenu";
 
 const Toolbar = ({ pageType }: { pageType: "posts" | "servers" }) => {
-    const logo = (
-        <img
-            src="https://i.redd.it/x36jz0skm9z61.png"
-            className="w-10 h-10 rounded-full"
-        />
-    );
+    const logo = <img src="/logo.png" className="w-16 h-16 rounded-full" />;
 
     return (
         <PToolbar
